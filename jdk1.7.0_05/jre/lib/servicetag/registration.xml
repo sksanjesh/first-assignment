@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<registration_data version="1.0">
+   <environment>
+      <hostname>PC3827</hostname>
+      <hostId/>
+      <osName>Windows 7</osName>
+      <osVersion>6.1</osVersion>
+      <osArchitecture>x86</osArchitecture>
+      <systemModel>OptiPlex 990</systemModel>
+      <systemManufacturer>Dell Inc.</systemManufacturer>
+      <cpuManufacturer>GenuineIntel</cpuManufacturer>
+      <serialNumber>GQ5JB2S</serialNumber>
+   </environment>
+   <registry urn="urn:st:1bd663fb-ad88-4868-8e61-2e5c70b59094" version="1.0">
+      <service_tag>
+         <instance_urn>urn:st:a08712da-9ff4-4b6e-a117-a2031abece02</instance_urn>
+         <product_name>Java SE 7 Development Kit</product_name>
+         <product_version>1.7.0_05</product_version>
+         <product_urn>JSEZ9-007-ZZZZ</product_urn>
+         <product_parent_urn>urn:uuid:dc1704fe-264f-11dc-9482-080020a9ed93</product_parent_urn>
+         <product_parent>Java Platform Standard Edition 7 (Java SE 7)</product_parent>
+         <product_defined_inst_id>id=1.7.0_05-b05 x86,dir=C:\PROGRA~2\Java\JDK17~1.0_0\jre</product_defined_inst_id>
+         <product_vendor>Oracle Corporation</product_vendor>
+         <platform_arch>x86</platform_arch>
+         <timestamp>2012-07-16 21:38:03 GMT</timestamp>
+         <container>global</container>
+         <source>Windows JDK i586 installer</source>
+         <installer_uid>-1</installer_uid>
+      </service_tag>
+   </registry>
+</registration_data>
