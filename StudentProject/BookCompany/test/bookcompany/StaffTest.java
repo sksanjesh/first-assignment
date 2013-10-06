@@ -6,6 +6,8 @@ package bookcompany;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -29,6 +31,7 @@ public class StaffTest {
             database+= filename.trim() + ";DriverID=22;READONLY=true}";
             connectionString = database;
             con = DriverManager.getConnection(connectionString, username, password);
+            
         }
         catch (Exception e)
                 {
@@ -53,13 +56,12 @@ public class StaffTest {
     }
     
     @Test
-    public void testNullConnection() {
-        Connection testCon = null;
-        Staff instance = new Staff();
-        
-        String result = instance.add(con);
-        
-        if (result.contains("Error:"))
+    public void testConnectionNotNull() {
+        if (con == null)
+        {
+            assert false;
+        }
+        else
         {
             assert true;
         }
@@ -81,7 +83,6 @@ public class StaffTest {
         String expResult = "The Staff Has Been Added";
         String result = instance.add(con);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -91,10 +92,14 @@ public class StaffTest {
     public void testUpdate() {
         System.out.println("update");
         Staff instance = new Staff();
-        String expResult = "";
+        instance.setFName("TestUpdated");
+        instance.setLName("TestUpdated");
+        instance.setAge(21);
+        instance.setPosition("TestUpdated Position");
+        instance.setSalary(20000);
+        String expResult = "The Record Was Updated";
         String result = instance.update(con);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -103,11 +108,28 @@ public class StaffTest {
     @Test
     public void testFind() {
         System.out.println("find");
+        try
+        {
         Staff instance = new Staff();
-        String expResult = "";
+        Statement S = con.createStatement();
+        int testID = 1;
+        
+        String Query = "SELECT ID FROM PERSON";
+        ResultSet rs = S.executeQuery(Query);
+
+        while (rs.next()){
+            testID = rs.getInt("ID");
+        }
+        
+        instance.setID(testID);
+        String expResult = "The Above Record Was Found";
         String result = instance.find(con);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error: " + e);
+        }
     }
 
     /**
@@ -116,10 +138,63 @@ public class StaffTest {
     @Test
     public void testDelete() {
         System.out.println("delete");
+        try
+        {
         Staff instance = new Staff();
-        String expResult = "";
+        Statement S = con.createStatement();
+        int testID = 1;
+        
+        String Query = "SELECT ID FROM PERSON";
+        ResultSet rs = S.executeQuery(Query);
+
+        while (rs.next()){
+            testID = rs.getInt("ID");
+        }
+        
+        instance.setID(testID);
+        String expResult = "The Record Was Deleted";
         String result = instance.delete(con);
         assertEquals(expResult, result);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error: " + e);
+        }
 
+    }
+    
+    /**
+     * Test of find method if invalid ID is passed, of class Staff.
+     */
+    @Test
+    public void testFindInvalidID() {
+        System.out.println("find");
+        Staff instance = new Staff();
+        instance.setID(-1);
+        String result = instance.find(con);
+        if (instance.getFName() == "" && instance.getLName() == "" && !(result.contains("Error")))
+        {
+            assert true;
+        }
+        else
+        {
+            assert false;
+        }
+    }
+    
+    @Test
+    public void testUpdateInvalidID() {
+        System.out.println("find");
+        Staff instance = new Staff();
+        instance.setID(-1);
+        String result = instance.update(con);
+        if (result.contains("java.sql.SQLException"))
+        {
+            assert true;
+        }
+        else
+        {
+            assert false;
+        }
     }
 }
