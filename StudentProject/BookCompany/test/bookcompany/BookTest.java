@@ -19,11 +19,11 @@ import static org.junit.Assert.*;
 public class BookTest {
     
     public BookTest() {
-        DBConnection DB = new DBConnection("C:/Users/aadhikthikar/Desktop/BookCompany.accdb");
+        
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() {        
     }
     
     @AfterClass
@@ -46,7 +46,25 @@ public class BookTest {
         System.out.println("findBook");
         DBConnection DB = new DBConnection("C:/Users/aadhikthikar/Desktop/BookCompany.accdb");
         Connection con = DB.con;
+        Book instance = new Book();    
+        instance.setISBN("5");
+        String expResult = "The Above Record Was Found";
+        String result = instance.findBook(con);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of findBook method, of class Book.
+     */
+    @Test
+    public void testFindBook_noConn() {
+        System.out.println("findBook");
+        DBConnection DB = new DBConnection("C:/Users/aadhikthikar/Desktop/BookCompany.accdb");
+        Connection con = DB.con;
         Book instance = new Book();        
+        instance.setISBN("xxxxx");
         String expResult = "The Above Record Was Found";
         String result = instance.findBook(con);
         assertEquals(expResult, result);
@@ -54,6 +72,22 @@ public class BookTest {
         //fail("The test case is a prototype.");
     }
 
+    /**
+     * Test of findBook method, of class Book.
+     */
+    @Test
+    public void testFindBook_noResult() {
+        System.out.println("findBook");
+        //DBConnection DB = new DBConnection("C:/Users/aadhikthikar/Desktop/BookCompany.accdb");
+        Connection con = null;
+        Book instance = new Book(); 
+        //instance.setISBN("x");
+        String expResult = "Error: java.lang.NullPointerException";
+        String result = instance.findBook(con);        
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
     /**
      * Test of updateBook method, of class Book.
      */
