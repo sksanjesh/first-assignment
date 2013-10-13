@@ -323,10 +323,51 @@ public class BookTest {
     public void testAddBook() {
         System.out.println("addBook");
         
-        Book instance = new Book();
-        instance.setISBN("55");
-        instance.setTitle("Test");
+        Book instance = new Book();       
+        String expResult = "The Book Has Been Added";        
+        String result = instance.addBook(con);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of addBook method, of class Book.
+     */
+    @Test
+    public void testAddBook_checkDB() {
+        System.out.println("addBook");
+        
+        Book instance = new Book();  
+         instance.setISBN("55");
+        instance.setTitle("Lone Ranger");
+        instance.setAuthor("Avinesh");
+        instance.setSubject("History");
+        instance.setPublisher("Wiley");
+        instance.setPublicationYear(1999);
         instance.setPrice(3.00);
+        String expResult = "The Book Has Been Added";        
+        String result = instance.addBook(con);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of addBook method, of class Book.
+     */
+    @Test
+    public void testAddBook_checkDBMissingValues() {
+        System.out.println("addBook");
+        
+        Book instance = new Book();  
+         instance.setISBN("55");
+        instance.setTitle("Lone Ranger");
+        instance.setAuthor("Avinesh");
+        instance.setSubject("History");
+        instance.setPublisher("Wiley");
+        //instance.setPublicationYear(1999);
+        //instance.setPrice(3.00);
         String expResult = "The Book Has Been Added";        
         String result = instance.addBook(con);
         assertEquals(expResult, result);
@@ -341,6 +382,21 @@ public class BookTest {
     public void testDeleteBook() {
         System.out.println("deleteBook");        
         Book instance = new Book();
+        String expResult = "The Record Was Deleted";        
+        String result = instance.deleteBook(con);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of deleteBook method, of class Book.
+     */
+    @Test
+    public void testDeleteBook_DBCheck() {
+        System.out.println("deleteBook");        
+        Book instance = new Book();
+        instance.setISBN("44");
         String expResult = "The Record Was Deleted";        
         String result = instance.deleteBook(con);
         assertEquals(expResult, result);
