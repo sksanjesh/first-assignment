@@ -13,7 +13,7 @@ public class OrderLine {
     private int orderNumber;
     private int orderLineNumber;
     private int Quantity;
-    private String ISBN;
+    private String ISBN = "";
     
     public OrderLine()
     {

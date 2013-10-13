@@ -23,6 +23,7 @@ public class DBConnection {
             String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=";
             database+= filename.trim() + ";DriverID=22;READONLY=true}";
             connectionString = database;
+            //con = DriverManager.getConnection("jdbc:odbc:BookCompany"); //alternatively
             con = DriverManager.getConnection(connectionString, username, password);
         }
         catch(Exception e){
