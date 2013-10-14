@@ -97,6 +97,38 @@ public class BookTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
+    
+    /**
+     * Test of updateBook method, of class Book, Not Existing.
+     */
+    @Test
+    public void testUpdateBook_NotExist() {
+        System.out.println("updateBook");        
+        Book instance = new Book();
+        instance.setISBN("xxx");
+        instance.setTitle("Howling Reborn");
+        String expResult = "The Record Was Updated";
+        String result = instance.updateBook(con);
+        assertFalse(expResult.equals(result));
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
+    
+    /**
+     * Test of updateBook method, of class Book, null object.
+     */
+    @Test
+    public void testUpdateBook_DBCheck() {
+        System.out.println("updateBook");        
+        Book instance = new Book();
+        instance.setISBN("44");
+        instance.setTitle("Test XXX");
+        String expResult = "The Record Was Updated";
+        String result = instance.updateBook(con);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
 
     /**
      * Test of addBook method, of class Book, null object.
