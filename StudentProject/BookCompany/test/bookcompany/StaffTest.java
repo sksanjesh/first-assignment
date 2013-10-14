@@ -189,6 +189,7 @@ public class StaffTest {
         Staff instance = new Staff();
         instance.setID(-1);
         String result = instance.update(con);
+        
         if (instance.getFName() == null && instance.getLName() == null && !(result.contains("Error")))
         {
             assert true;
