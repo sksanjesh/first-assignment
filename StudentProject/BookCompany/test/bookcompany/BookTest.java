@@ -143,6 +143,46 @@ public class BookTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
+    
+    /**
+     * Test of addBook method, of class Book, null object.
+     */
+    @Test
+    public void testAddBook_CheckNull() {
+        System.out.println("addBook");        
+        Book instance = new Book();
+        instance.setISBN("66");
+        instance.setAuthor("Avinesh");
+        instance.setPrice(20.00);
+        //instance.setPublisher("Wiley");
+        //instance.setSubject("Humor");
+        //instance.setPublicationYear(3333);
+        String expResult = "The Book Has Been Added";
+        String result = instance.addBook(con);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
+    
+    /**
+     * Test of addBook method, of class Book, DB Check.
+     */
+    @Test
+    public void testAddBook_DBCheck() {
+        System.out.println("addBook");        
+        Book instance = new Book();
+        instance.setISBN("66");
+        instance.setAuthor("Avinesh");
+        instance.setPrice(20.00);
+        instance.setPublisher("Wiley");
+        instance.setSubject("Humor");
+        instance.setPublicationYear(3333);
+        String expResult = "The Book Has Been Added";
+        String result = instance.addBook(con);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
 
     /**
      * Test of deleteBook method, of class Book, null object.
