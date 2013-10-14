@@ -197,4 +197,34 @@ public class BookTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
+    
+    /**
+     * Test of deleteBook method, of class Book, not exist.
+     */
+    @Test
+    public void testDeleteBook_NotExist() {
+        System.out.println("deleteBook");        
+        Book instance = new Book();
+        instance.setISBN("xxx");
+        String expResult = "The Record Was Deleted";
+        String result = instance.deleteBook(con);
+        assertFalse(expResult.equals(result));
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
+    
+    /**
+     * Test of deleteBook method, of class Book, null object.
+     */
+    @Test
+    public void testDeleteBook_DBCheck() {
+        System.out.println("deleteBook");        
+        Book instance = new Book();
+        instance.setISBN("88");
+        String expResult = "The Record Was Deleted";
+        String result = instance.deleteBook(con);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
 }
