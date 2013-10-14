@@ -87,7 +87,8 @@ public class Book {
     {
         return Price;
     }
-    
+     
+   //This method is used to search and return book    
     public String findBook(Connection con) 
     {
        try {
@@ -95,6 +96,7 @@ public class Book {
             String Query;
             ResultSet rs;
         
+            // Select from books table where ISBN value matches the param
             Query = "SELECT * FROM Book WHERE ISBN = '" + ISBN + "'" ;
             rs = S.executeQuery(Query);    
             while (rs.next())
@@ -115,12 +117,14 @@ public class Book {
        }
     }
     
+   //This method is used to update book details    
     public String updateBook(Connection con) 
     {
         try {
             Statement S = con.createStatement();
             String Query;
             
+            //Update the Row with the matching ISBN Number
             Query = "UPDATE Book SET Title = '"+ Title + "', Author = '" + Author +"', Subjects = '" + Subject + "', Publisher ='" + Publisher +"', Publication_Year = " + Publication_Year+ ", Price = " + Price + " WHERE ISBN = '" + ISBN +"'";
             S.executeUpdate(Query);
             
@@ -132,11 +136,13 @@ public class Book {
        }
     }
     
+    //This method is used to add a new book   
     public String addBook(Connection con) 
     {
         try {
             Statement S = con.createStatement();
             
+            //Insert new record in book table
             String Query = "INSERT INTO Book VALUES ('" + ISBN + "', '"+ Title + "', '" + Author +"', '" + Subject + "', '" + Publisher +"', " + Publication_Year + ", " + Price + ")" ;
             S.executeUpdate(Query);
                
@@ -149,12 +155,14 @@ public class Book {
        }
     }
     
+    //This method is used to delete a book    
     public String deleteBook(Connection con)
     {
         try {
             Statement S = con.createStatement();
             String Query;
             
+            // Delete from books table where ISBN value matches the param
             Query = "DELETE FROM Book WHERE ISBN = '" + ISBN + "'";
             S.executeUpdate(Query);    
             
