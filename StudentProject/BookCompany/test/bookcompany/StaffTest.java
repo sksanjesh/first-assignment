@@ -168,11 +168,12 @@ public class StaffTest {
      */
     @Test
     public void testFindInvalidID() {
-        System.out.println("find");
+        System.out.println("findInvalid");
         Staff instance = new Staff();
         instance.setID(-1);
         String result = instance.find(con);
-        if (instance.getFName() == "" && instance.getLName() == "" && !(result.contains("Error")))
+        String fname = instance.getFName();
+        if (instance.getFName() == null && instance.getLName() == null && !(result.contains("Error")))
         {
             assert true;
         }
@@ -184,11 +185,11 @@ public class StaffTest {
     
     @Test
     public void testUpdateInvalidID() {
-        System.out.println("find");
+        System.out.println("updateInvalid");
         Staff instance = new Staff();
         instance.setID(-1);
         String result = instance.update(con);
-        if (result.contains("java.sql.SQLException"))
+        if (instance.getFName() == null && instance.getLName() == null && !(result.contains("Error")))
         {
             assert true;
         }
