@@ -41,7 +41,7 @@ public class BookTest {
     }
 
      /**
-     * Test of findBook method, of class Book.
+     * Test of findBook method, of class Book, null object.
      */
     @Test
     public void testFindBook() {
@@ -53,9 +53,39 @@ public class BookTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
+    
+    /**
+     * Test of findBook method, of class Book, not exist.
+     */
+    @Test
+    public void testFindBook_NotExist() {
+        System.out.println("findBook");
+        Book instance = new Book();
+        instance.setISBN("xxx");
+        String expResult = "The Above Record Was Found";
+        String result = instance.findBook(con);
+        assertFalse(expResult.equals(result));
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
+    
+    /**
+     * Test of findBook method, of class Book, database verification.
+     */
+    @Test
+    public void testFindBook_DBCheck() {
+        System.out.println("findBook");
+        Book instance = new Book();
+        instance.setISBN("1");
+        String expResult = "Harry Potter";
+        String result = instance.findBook(con);
+        assertEquals(expResult, instance.getTitle());
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
 
     /**
-     * Test of updateBook method, of class Book.
+     * Test of updateBook method, of class Book, null object.
      */
     @Test
     public void testUpdateBook() {
@@ -69,7 +99,7 @@ public class BookTest {
     }
 
     /**
-     * Test of addBook method, of class Book.
+     * Test of addBook method, of class Book, null object.
      */
     @Test
     public void testAddBook() {
@@ -83,7 +113,7 @@ public class BookTest {
     }
 
     /**
-     * Test of deleteBook method, of class Book.
+     * Test of deleteBook method, of class Book, null object.
      */
     @Test
     public void testDeleteBook() {
