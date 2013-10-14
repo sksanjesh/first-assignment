@@ -148,7 +148,7 @@ public class BookTest {
      * Test of addBook method, of class Book, null object.
      */
     @Test
-    public void testAddBook_CheckNull() {
+    public void testAddBook_CheckNullinDB() {
         System.out.println("addBook");        
         Book instance = new Book();
         instance.setISBN("66");
