@@ -239,7 +239,7 @@ public class BookTest {
         Book instance = new Book();
         String expResult = "The Above Record Was Found";
         String result = instance.findBook(con);
-        assertEquals(expResult, result);
+        assertFalse(expResult.equals(result));
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -268,7 +268,7 @@ public class BookTest {
         instance.setISBN("xxx");
         String expResult = "The Above Record Was Found";
         String result = instance.findBook(con);
-        assertEquals(expResult, result);
+        assertFalse(expResult.equals(result));
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -296,7 +296,7 @@ public class BookTest {
         Book instance = new Book();
         String expResult = "The Record Was Updated";
         String result = instance.updateBook(con);
-        assertEquals(expResult, result);
+        assertFalse(expResult.equals(result));
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -309,6 +309,22 @@ public class BookTest {
         System.out.println("updateBook");        
         Book instance = new Book();
         instance.setISBN("xxx");
+        String expResult = "The Record Was Updated";
+        String result = instance.updateBook(con);
+        assertFalse(expResult.equals(result));
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of updateBook method, of class Book.
+     */
+    @Test
+    public void testUpdateBook_ISBN55() {
+        System.out.println("updateBook");        
+        Book instance = new Book();
+        instance.setISBN("55");
+        instance.setTitle("Lone Ranger part 1");
         String expResult = "The Record Was Updated";
         String result = instance.updateBook(con);
         assertEquals(expResult, result);
@@ -326,7 +342,7 @@ public class BookTest {
         Book instance = new Book();       
         String expResult = "The Book Has Been Added";        
         String result = instance.addBook(con);
-        assertEquals(expResult, result);
+        assertFalse(expResult.equals(result));
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -384,7 +400,7 @@ public class BookTest {
         Book instance = new Book();
         String expResult = "The Record Was Deleted";        
         String result = instance.deleteBook(con);
-        assertEquals(expResult, result);
+        assertFalse(expResult.equals(result));
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -400,6 +416,21 @@ public class BookTest {
         String expResult = "The Record Was Deleted";        
         String result = instance.deleteBook(con);
         assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of deleteBook method, of class Book.
+     */
+    @Test
+    public void testDeleteBook_NotExist() {
+        System.out.println("deleteBook");        
+        Book instance = new Book();
+        instance.setISBN("xxx");
+        String expResult = "The Record Was Deleted";        
+        String result = instance.deleteBook(con);
+        assertFalse(expResult.equals(result));
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
